@@ -3,7 +3,7 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.command;
 import co.com.sofka.domain.generic.Command;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
-public class UpgradeTicketOffice implements Command {
+public class AddTicketOffice implements Command {
     private final DocumentaryCenterId documentaryCenterId;
     private final NumberOfBallots numberOfBallots;
     private final Date dateDay;
@@ -11,7 +11,7 @@ public class UpgradeTicketOffice implements Command {
     private final InvoiceDescription ticketDescription;
 
 
-    public UpgradeTicketOffice(DocumentaryCenterId documentaryCenterId, NumberOfBallots numberOfBallots, Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
+    public AddTicketOffice(DocumentaryCenterId documentaryCenterId, NumberOfBallots numberOfBallots, Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
         this.documentaryCenterId = documentaryCenterId;
         this.numberOfBallots = numberOfBallots;
         this.dateDay = dateDay;
@@ -39,4 +39,3 @@ public class UpgradeTicketOffice implements Command {
         return ticketDescription;
     }
 }
-

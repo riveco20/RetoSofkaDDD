@@ -71,12 +71,12 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
     }
 
     public void upgradePurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
-        appendChange(new PurcheseInvoiceupdated(entityId,datePurchase,companyName,purchaseMoney,purchaseDescription));
+        appendChange(new PurcheseInvoiceupdated(entityId,datePurchase,companyName,purchaseMoney,purchaseDescription)).apply();
 
     }
 
     public void ticketOfficeupgrade(TicketOfficeId entityId, NumberOfBallots numberOfBallots , Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription){
-        appendChange(new TicketOfficeupdated(entityId,numberOfBallots,dateDay,ticketMoney,ticketDescription));
+        appendChange(new TicketOfficeupdated(entityId,numberOfBallots,dateDay,ticketMoney,ticketDescription)).apply();
 
     }
 
