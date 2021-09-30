@@ -3,7 +3,7 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.command;
 import co.com.sofka.domain.generic.Command;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
-public class AddPucharSelnvoice implements Command {
+public class AddPucharSelnvoice extends Command {
     private final DocumentaryCenterId documentaryCenterId;
     private final Date datePurchase;
     private final Money purchaseMoney;

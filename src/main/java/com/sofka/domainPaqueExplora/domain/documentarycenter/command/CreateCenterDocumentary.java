@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.Command;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.DocumentaryCenterId;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.Name;
 
-public class CreateCenterDocumentary implements Command {
+public class CreateCenterDocumentary extends Command {
     private final DocumentaryCenterId documentaryCenterId;
     private final Name name;
 

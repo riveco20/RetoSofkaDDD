@@ -3,7 +3,7 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.command;
 import co.com.sofka.domain.generic.Command;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
-public class UpgradeTicketOffice implements Command {
+public class UpgradeTicketOffice extends Command {
     private final DocumentaryCenterId documentaryCenterId;
     private final NumberOfBallots numberOfBallots;
     private final Date dateDay;

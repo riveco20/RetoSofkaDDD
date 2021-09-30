@@ -3,7 +3,7 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.command;
 import co.com.sofka.domain.generic.Command;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
-public class UpgradePucharseInovoice implements Command {
+public class UpgradePucharseInovoice extends Command {
     private final DocumentaryCenterId documentaryCenterId;
     private final Date datePurchase;
     private final Money purchaseMoney;

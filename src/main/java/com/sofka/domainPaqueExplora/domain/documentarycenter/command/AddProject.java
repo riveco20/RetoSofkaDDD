@@ -3,7 +3,7 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.command;
 import co.com.sofka.domain.generic.Command;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
-public class AddProject implements Command{
+public class AddProject extends Command{
     private final DocumentaryCenterId documentaryCenterId;
     private final Name name;
     private final ProjectDescription projectDescription;
