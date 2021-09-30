@@ -4,10 +4,7 @@ import co.com.sofka.domain.generic.EventChange;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.Project;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.PurchaseInvoice;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.TicketOffice;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.event.DocumentaryCenterCreate;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.event.ProjectAdded;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.event.PurcheseInvoiceAdded;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.event.TicketOfficeAdded;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.event.*;
 
 import java.util.HashSet;
 
@@ -57,8 +54,8 @@ public class DocumentaryCenterChange extends EventChange {
                     envet.TicketDescription()));
         });
 
-/**        apply((Projectupdated event)->{
-            var project = documentaryCenter.getProjecFortId(event.EntityID())
+    apply((Projectupdated event)->{
+            var project = documentaryCenter.getProjecFortId(event.ProjectId())
                     .orElseThrow(()-> new IllegalArgumentException("No se encontro el documento con el proyecto ingresado"));
             project.upgradeSpecifications(event.ProjectDescription());
             project.upgradeCapitalMoney(event.CapitalMoney());
@@ -66,18 +63,17 @@ public class DocumentaryCenterChange extends EventChange {
         });
 
         apply((PurcheseInvoiceupdated event)->{
-          var purchaseInovoice=  documentaryCenter.getPurchaseForId(event.EntityId())
+          var purchaseInovoice=  documentaryCenter.getPurchaseForId(event.Entity())
                   .orElseThrow(()-> new IllegalArgumentException("No se encontro el documento con el proyecto ingresado"));
               purchaseInovoice.upgradeData(event.DatePurchase(),event.CompanyName(), event.PurchaseMoney(),event.PurchaseDescription());
         });
 
         apply((TicketOfficeupdated event)->{
-          var ticketOffice =  documentaryCenter.getTicketOfficeForId(event.EntityId())
+          var ticketOffice =  documentaryCenter.getTicketOfficeForId(event.Entity())
                   .orElseThrow(()-> new IllegalArgumentException("No se encontro el documento con el proyecto ingresado"));
             ticketOffice.upgradeData(event.NumberOfBallots(),event.DateDay(),event.TicketMoney(),event.TicketDescription());
 
         });
-*/
 
 
 

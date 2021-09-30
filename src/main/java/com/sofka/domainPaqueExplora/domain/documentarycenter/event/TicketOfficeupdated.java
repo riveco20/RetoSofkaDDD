@@ -3,16 +3,16 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.event;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
-public class ticketOfficeupdated extends DomainEvent {
-    private TicketOfficeId entity;
+public class TicketOfficeupdated extends DomainEvent {
+    private TicketOfficeId ticketOfficeId;
     private NumberOfBallots numberOfBallots;
     private Date dateDay;
     private Money ticketMoney;
     private InvoiceDescription ticketDescription;
 
-    public ticketOfficeupdated(TicketOfficeId entity, NumberOfBallots numberOfBallots, Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
+    public TicketOfficeupdated(TicketOfficeId entity, NumberOfBallots numberOfBallots, Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
         super("parqueexplora.bodega.facturataquillaactualizada");
-        this.entity = entity;
+        this.ticketOfficeId = entity;
         this.numberOfBallots = numberOfBallots;
         this.dateDay = dateDay;
         this.ticketMoney = ticketMoney;
@@ -21,7 +21,7 @@ public class ticketOfficeupdated extends DomainEvent {
         }
 
     public TicketOfficeId Entity() {
-        return entity;
+        return ticketOfficeId;
     }
 
     public NumberOfBallots NumberOfBallots() {

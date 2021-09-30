@@ -76,7 +76,7 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
     }
 
     public void ticketOfficeupgrade(TicketOfficeId entityId, NumberOfBallots numberOfBallots , Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription){
-        appendChange(new ticketOfficeupdated(entityId,numberOfBallots,dateDay,ticketMoney,ticketDescription));
+        appendChange(new TicketOfficeupdated(entityId,numberOfBallots,dateDay,ticketMoney,ticketDescription));
 
     }
 

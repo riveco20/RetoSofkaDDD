@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
 public class PurcheseInvoiceupdated extends DomainEvent {
-    private PurchaseInvoiceId entity;
+    private PurchaseInvoiceId purchaseInvoiceId;
     private Date datePurchase;
     private Money purchaseMoney;
     private InvoiceDescription purchaseDescription;
@@ -15,7 +15,7 @@ public class PurcheseInvoiceupdated extends DomainEvent {
     }
 
     public PurchaseInvoiceId Entity() {
-        return entity;
+        return purchaseInvoiceId;
     }
 
     public Date DatePurchase() {
