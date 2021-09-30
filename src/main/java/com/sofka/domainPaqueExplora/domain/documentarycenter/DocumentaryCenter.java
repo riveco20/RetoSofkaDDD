@@ -1,14 +1,14 @@
 package com.sofka.domainPaqueExplora.domain.documentarycenter;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.Project;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.PurchaseInvoice;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.TicketOffice;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.event.ProjectAdded;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.event.PurcheseInvoiceAdded;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.event.TicketOfficeAdded;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.event.*;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -19,11 +19,22 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
     protected Set<TicketOffice> ticketOffices;
     protected Set<Project> projectset;
 
-    public DocumentaryCenter(DocumentaryCenterId entityId) {
 
+    public DocumentaryCenter(DocumentaryCenterId entityId,char letra) {
         super(entityId);
-
+       appendChange(new DocumentaryCenterCreate(letra)).apply();
     }
+    private DocumentaryCenter(DocumentaryCenterId entityId){
+        super(entityId);
+        subscribe(new DocumentaryCenterChange(this));
+    }
+
+    public static DocumentaryCenter from(DocumentaryCenterId documentaryCenterId, List<DomainEvent> events){
+        var documentary = new DocumentaryCenter(documentaryCenterId);
+        events.forEach(documentary::applyEvent);
+        return documentary;
+    }
+
         //Agregando Objetos
     public void addProject(ProjectId entityId, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal){
         Objects.requireNonNull(entityId);
@@ -32,7 +43,7 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
         Objects.requireNonNull(capitalMoney);
         Objects.requireNonNull(dateInitial);
         Objects.requireNonNull(dateFinal);
-        appendChange(new ProjectAdded(entityId, name,projectDescription, capitalMoney, dateInitial, dateFinal));
+        appendChange(new ProjectAdded(entityId, name,projectDescription, capitalMoney, dateInitial, dateFinal)).apply();
     }
 
     public void addPurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
@@ -41,7 +52,7 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
         Objects.requireNonNull(companyName);
         Objects.requireNonNull(purchaseMoney);
         Objects.requireNonNull(purchaseDescription);
-        appendChange(new PurcheseInvoiceAdded(entityId,datePurchase,purchaseMoney,purchaseDescription,companyName));
+        appendChange(new PurcheseInvoiceAdded(entityId,datePurchase,purchaseMoney,purchaseDescription,companyName)).apply();
     }
 
     public void addTicketOfficeInvoice(TicketOfficeId entityId, NumberOfBallots numberOfBallots , Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription){
@@ -50,26 +61,41 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
         Objects.requireNonNull(dateDay);
         Objects.requireNonNull(ticketMoney);
         Objects.requireNonNull(ticketDescription);
-        appendChange(new TicketOfficeAdded(entityId, numberOfBallots, dateDay, ticketMoney, ticketDescription));
+        appendChange(new TicketOfficeAdded(entityId, numberOfBallots, dateDay, ticketMoney, ticketDescription)).apply();
     }
 
+    //Actualizar
+
+    public void upgradeProject(ProjectId entityId, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal){
+        appendChange(new Projectupdated(entityId,name,projectDescription,dateInitial,dateFinal,capitalMoney)).apply();
+    }
+
+    public void upgradePurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
+        appendChange(new PurcheseInvoiceupdated(entityId,datePurchase,companyName,purchaseMoney,purchaseDescription));
+
+    }
+
+    public void ticketOfficeupgrade(TicketOfficeId entityId, NumberOfBallots numberOfBallots , Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription){
+        appendChange(new ticketOfficeupdated(entityId,numberOfBallots,dateDay,ticketMoney,ticketDescription));
+
+    }
 
       //obtener mediante el id
-    public Optional<Project> getProjectId(ProjectId entityId){
+    protected Optional<Project> getProjecFortId(ProjectId entityId){
         return projectset.
                 stream().
                 filter(project -> project.identity().equals(entityId))
                 .findFirst();
     }
 
-    public Optional<PurchaseInvoice> getProjectId(PurchaseInvoiceId entityId){
+    protected Optional<PurchaseInvoice> getPurchaseForId(PurchaseInvoiceId entityId){
         return purchases.
                 stream().
                 filter(purchase -> purchase.identity().equals(entityId))
                 .findFirst();
     }
 
-    public Optional<TicketOffice> getProjectId(TicketOfficeId entityId){
+    protected Optional<TicketOffice> getTicketOfficeForId(TicketOfficeId entityId){
         return ticketOffices.
                 stream().
                 filter(ticketOffice -> ticketOffice.identity().equals(entityId))

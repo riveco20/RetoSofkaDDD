@@ -33,4 +33,8 @@ public class PurcheseInvoiceAdded extends DomainEvent {
     public CompanyName CompanyName() {
         return companyName;
     }
+
+    public PurchaseInvoiceId EntityId() {
+        return entityId;
+    }
 }
