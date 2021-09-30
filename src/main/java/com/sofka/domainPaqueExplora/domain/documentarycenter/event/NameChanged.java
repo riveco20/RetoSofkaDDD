@@ -3,14 +3,14 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.event;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.Name;
 
-public class DocumentaryCenterCreate extends DomainEvent {
-   private final Name letraArchivo;
-    public DocumentaryCenterCreate(Name name) {
-        super("Archivo Creado");
-        this.letraArchivo=name;
+public class NameChanged extends DomainEvent {
+   private final Name name;
+    public NameChanged(Name name) {
+        super("parqueexplora.bodega.nombredocumentocentralcambiado");
+        this.name=name;
     }
 
     public Name getName() {
-        return letraArchivo;
+        return name;
     }
 }

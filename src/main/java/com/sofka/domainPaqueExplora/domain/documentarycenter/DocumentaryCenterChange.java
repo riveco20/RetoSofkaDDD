@@ -13,6 +13,7 @@ public class DocumentaryCenterChange extends EventChange {
 
     public DocumentaryCenterChange(DocumentaryCenter documentaryCenter) {
         apply((DocumentaryCenterCreate event)->{
+            documentaryCenter.name=event.getName();
             documentaryCenter.projectset= new HashSet<>();
             documentaryCenter.ticketOffices= new HashSet<>();
             documentaryCenter.purchases=new HashSet<>();
@@ -75,6 +76,11 @@ public class DocumentaryCenterChange extends EventChange {
 
         });
 
+        apply((NameChanged event)->{
+
+            documentaryCenter.name = event.getName();
+
+        });
 
 
     }

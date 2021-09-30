@@ -15,12 +15,14 @@ import java.util.Set;
 
 public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
 
+
+    protected Name name;
     protected Set<PurchaseInvoice> purchases;
     protected Set<TicketOffice> ticketOffices;
     protected Set<Project> projectset;
 
 
-    public DocumentaryCenter(DocumentaryCenterId entityId,String name) {
+    public DocumentaryCenter(DocumentaryCenterId entityId,Name name) {
         super(entityId);
        appendChange(new DocumentaryCenterCreate(name)).apply();
     }
@@ -101,6 +103,16 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
                 filter(ticketOffice -> ticketOffice.identity().equals(entityId))
                 .findFirst();
     }
+
+    public void renamedocumentarycenter(Name name){
+        appendChange(new NameChanged(name)).apply();
+    }
+
+
+    public Name getName() {
+        return name;
+    }
+
     public Set<PurchaseInvoice> Puchases() {
         return purchases;
     }
