@@ -2,9 +2,10 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class CompanyName implements ValueObject<String> {
+public class Name implements ValueObject {
+
     @Override
-    public String value() {
+    public Object value() {
         return null;
     }
 }

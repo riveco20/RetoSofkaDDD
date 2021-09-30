@@ -20,9 +20,9 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
     protected Set<Project> projectset;
 
 
-    public DocumentaryCenter(DocumentaryCenterId entityId,char letra) {
+    public DocumentaryCenter(DocumentaryCenterId entityId,String name) {
         super(entityId);
-       appendChange(new DocumentaryCenterCreate(letra)).apply();
+       appendChange(new DocumentaryCenterCreate(name)).apply();
     }
     private DocumentaryCenter(DocumentaryCenterId entityId){
         super(entityId);
@@ -36,7 +36,7 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
     }
 
         //Agregando Objetos
-    public void addProject(ProjectId entityId, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal){
+    public void addProject(ProjectId entityId, Name name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(name);
         Objects.requireNonNull(projectDescription);
@@ -46,13 +46,13 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
         appendChange(new ProjectAdded(entityId, name,projectDescription, capitalMoney, dateInitial, dateFinal)).apply();
     }
 
-    public void addPurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
+    public void addPurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, Name companName, Money purchaseMoney, InvoiceDescription purchaseDescription){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(datePurchase);
-        Objects.requireNonNull(companyName);
+        Objects.requireNonNull(companName);
         Objects.requireNonNull(purchaseMoney);
         Objects.requireNonNull(purchaseDescription);
-        appendChange(new PurcheseInvoiceAdded(entityId,datePurchase,purchaseMoney,purchaseDescription,companyName)).apply();
+        appendChange(new PurcheseInvoiceAdded(entityId,datePurchase,purchaseMoney,purchaseDescription,companName)).apply();
     }
 
     public void addTicketOfficeInvoice(TicketOfficeId entityId, NumberOfBallots numberOfBallots , Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription){
@@ -66,11 +66,11 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
 
     //Actualizar
 
-    public void upgradeProject(ProjectId entityId, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal){
+    public void upgradeProject(ProjectId entityId, Name name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal){
         appendChange(new Projectupdated(entityId,name,projectDescription,dateInitial,dateFinal,capitalMoney)).apply();
     }
 
-    public void upgradePurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
+    public void upgradePurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, Name companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
         appendChange(new PurcheseInvoiceupdated(entityId,datePurchase,companyName,purchaseMoney,purchaseDescription)).apply();
 
     }

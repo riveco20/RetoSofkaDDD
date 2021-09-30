@@ -3,13 +3,13 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter.event;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class DocumentaryCenterCreate extends DomainEvent {
-   private final char letraArchivo;
-    public DocumentaryCenterCreate(char letra) {
+   private final String letraArchivo;
+    public DocumentaryCenterCreate(String name) {
         super("Archivo Creado");
-        this.letraArchivo=letra;
+        this.letraArchivo=name;
     }
 
-    public char LetraArchivo() {
+    public String LetraArchivo() {
         return letraArchivo;
     }
 }

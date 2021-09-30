@@ -7,13 +7,13 @@ import java.util.Objects;
 
 public class Project extends Entity<ProjectId> {
 
-    private ProjectName name;
+    private Name name;
     private ProjectDescription projectDescription;
     private Date dateInitial;
     private Date dateFinal;
     private Money capitalMoney;
 
-    public Project(ProjectId entityId, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal) {
+    public Project(ProjectId entityId, Name name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal) {
         super(entityId);
         this.name=name;
         this.projectDescription = projectDescription;
@@ -36,7 +36,7 @@ public class Project extends Entity<ProjectId> {
        this.projectDescription = Objects.requireNonNull(projectDescription);
     }
 
-    public ProjectName Name() {
+    public Name getName() {
         return name;
     }
 

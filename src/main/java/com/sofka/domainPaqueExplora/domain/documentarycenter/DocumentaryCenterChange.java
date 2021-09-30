@@ -24,7 +24,7 @@ public class DocumentaryCenterChange extends EventChange {
                 throw new IllegalArgumentException("no se puede Archivar mas de 4 proyecto ");
             }
             documentaryCenter.projectset.add(new Project(envet.EntityID(),
-                    envet.Name(),
+                    envet.getName(),
                     envet.ProjectDescription(),
                     envet.CapitalMoney(),
                     envet.DateInitial(),
@@ -63,9 +63,9 @@ public class DocumentaryCenterChange extends EventChange {
         });
 
         apply((PurcheseInvoiceupdated event)->{
-          var purchaseInovoice=  documentaryCenter.getPurchaseForId(event.Entity())
+          var purchaseInovoice=  documentaryCenter.getPurchaseForId(event.PurchaseInvoiceId())
                   .orElseThrow(()-> new IllegalArgumentException("No se encontro el documento con el proyecto ingresado"));
-              purchaseInovoice.upgradeData(event.DatePurchase(),event.CompanyName(), event.PurchaseMoney(),event.PurchaseDescription());
+              purchaseInovoice.upgradeData(event.DatePurchase(),event.CompanyName(), event.getPurchaseMoney(),event.PurchaseDescription());
         });
 
         apply((TicketOfficeupdated event)->{

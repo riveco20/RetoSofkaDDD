@@ -8,13 +8,13 @@ public class PurcheseInvoiceupdated extends DomainEvent {
     private Date datePurchase;
     private Money purchaseMoney;
     private InvoiceDescription purchaseDescription;
-    private CompanyName companyName;
+    private Name companyName;
 
-    public PurcheseInvoiceupdated(PurchaseInvoiceId entityId, Date datePurchase, CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription) {
+    public PurcheseInvoiceupdated(PurchaseInvoiceId entityId, Date datePurchase, Name companyName, Money purchaseMoney, InvoiceDescription purchaseDescription) {
         super("parqueexplora.bodega.facturacompraactualizada");
     }
 
-    public PurchaseInvoiceId Entity() {
+    public PurchaseInvoiceId PurchaseInvoiceId() {
         return purchaseInvoiceId;
     }
 
@@ -22,7 +22,7 @@ public class PurcheseInvoiceupdated extends DomainEvent {
         return datePurchase;
     }
 
-    public Money PurchaseMoney() {
+    public Money getPurchaseMoney() {
         return purchaseMoney;
     }
 
@@ -30,7 +30,7 @@ public class PurcheseInvoiceupdated extends DomainEvent {
         return purchaseDescription;
     }
 
-    public CompanyName CompanyName() {
+    public Name CompanyName() {
         return companyName;
     }
 }

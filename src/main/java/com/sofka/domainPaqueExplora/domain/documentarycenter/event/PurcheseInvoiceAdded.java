@@ -6,10 +6,10 @@ public class PurcheseInvoiceAdded extends DomainEvent {
     private final Date datePurchase;
     private final Money purchaseMoney;
     private final InvoiceDescription purchaseDescription;
-    private final CompanyName companyName;
+    private final Name companyName;
     private final PurchaseInvoiceId entityId;
 
-    public PurcheseInvoiceAdded(PurchaseInvoiceId entityId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription, CompanyName companyName) {
+    public PurcheseInvoiceAdded(PurchaseInvoiceId entityId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription, Name companyName) {
         super("ParqueExplora.Winery.purcheseInvoiceAdded");
         this.datePurchase = datePurchase;
         this.purchaseMoney = purchaseMoney;
@@ -30,7 +30,7 @@ public class PurcheseInvoiceAdded extends DomainEvent {
         return purchaseDescription;
     }
 
-    public CompanyName CompanyName() {
+    public Name CompanyName() {
         return companyName;
     }
 

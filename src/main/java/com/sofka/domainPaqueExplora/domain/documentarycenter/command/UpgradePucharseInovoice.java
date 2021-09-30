@@ -8,9 +8,9 @@ public class UpgradePucharseInovoice implements Command {
     private final Date datePurchase;
     private final Money purchaseMoney;
     private final InvoiceDescription purchaseDescription;
-    private final CompanyName companyName;
+    private final Name companyName;
 
-    public UpgradePucharseInovoice(DocumentaryCenterId documentaryCenterId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription, CompanyName companyName) {
+    public UpgradePucharseInovoice(DocumentaryCenterId documentaryCenterId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription, Name companyName) {
         this.documentaryCenterId = documentaryCenterId;
         this.datePurchase = datePurchase;
         this.purchaseMoney = purchaseMoney;
@@ -34,7 +34,7 @@ public class UpgradePucharseInovoice implements Command {
         return purchaseDescription;
     }
 
-    public CompanyName getCompanyName() {
+    public Name getCompanyName() {
         return companyName;
     }
 }

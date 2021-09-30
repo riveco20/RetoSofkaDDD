@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
 public class Projectupdated extends DomainEvent {
-    private ProjectName name;
+    private Name name;
     private ProjectDescription projectDescription;
     private Date dateInitial;
     private Date dateFinal;
@@ -12,7 +12,7 @@ public class Projectupdated extends DomainEvent {
     private ProjectId projectId;
 
 
-    public Projectupdated(ProjectId projectId,ProjectName name, ProjectDescription projectDescription, Date dateInitial, Date dateFinal, Money capitalMoney) {
+    public Projectupdated(ProjectId projectId,Name name, ProjectDescription projectDescription, Date dateInitial, Date dateFinal, Money capitalMoney) {
         super("parqueexplora.bodega.proyectoactualizado");
         this.name = name;
         this.projectDescription = projectDescription;
@@ -22,7 +22,7 @@ public class Projectupdated extends DomainEvent {
         this.projectId = projectId;
     }
 
-    public ProjectName Name() {
+    public Name getName() {
         return name;
     }
 

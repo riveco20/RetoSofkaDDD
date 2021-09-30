@@ -6,13 +6,13 @@ import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 public class ProjectAdded extends DomainEvent {
 
     private final ProjectId entityID;
-    private final ProjectName name;
+    private final Name name;
     private final ProjectDescription projectDescription;
     private final Money capitalMoney;
     private final Date dateInitial;
     private final Date dateFinal;
 
-    public ProjectAdded(ProjectId entityID, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal) {
+    public ProjectAdded(ProjectId entityID, Name name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal) {
         super("ParqueExplora.Winery.ProjectAdded");
         this.entityID = entityID;
         this.name = name;
@@ -26,7 +26,7 @@ public class ProjectAdded extends DomainEvent {
         return entityID;
     }
 
-    public ProjectName Name() {
+    public Name getName() {
         return name;
     }
 

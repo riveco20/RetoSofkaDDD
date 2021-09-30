@@ -10,9 +10,9 @@ public class PurchaseInvoice extends Entity<PurchaseInvoiceId> {
     private Date datePurchase;
     private Money purchaseMoney;
     private InvoiceDescription purchaseDescription;
-    private CompanyName companyName;
+    private Name companyName;
 
-    public PurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription) {
+    public PurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, Name companyName, Money purchaseMoney, InvoiceDescription purchaseDescription) {
         super(entityId);
         this.datePurchase=datePurchase;
         this.companyName= companyName;
@@ -20,7 +20,7 @@ public class PurchaseInvoice extends Entity<PurchaseInvoiceId> {
         this.purchaseDescription=purchaseDescription;
     }
 
-    public void upgradeData(Date datePurchase,CompanyName companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
+    public void upgradeData(Date datePurchase,Name companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
         this.datePurchase=Objects.requireNonNull(datePurchase);
         this.companyName=Objects.requireNonNull(companyName);
         this.purchaseMoney= Objects.requireNonNull(purchaseMoney);
@@ -39,7 +39,7 @@ public class PurchaseInvoice extends Entity<PurchaseInvoiceId> {
         return purchaseDescription;
     }
 
-    public CompanyName CompanyName() {
+    public Name CompanyName() {
         return companyName;
     }
 }
