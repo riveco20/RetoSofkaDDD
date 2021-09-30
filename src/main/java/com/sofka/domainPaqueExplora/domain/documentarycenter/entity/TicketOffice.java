@@ -5,13 +5,13 @@ import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
 import java.util.Objects;
 
-public class TicketOffice extends Entity<com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.TicketOffice> {
+public class TicketOffice extends Entity<TicketOfficeId> {
     private NumberOfBallots numberOfBallots;
     private Date dateDay;
     private Money ticketMoney;
     private InvoiceDescription ticketDescription;
 
-    public TicketOffice(com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.TicketOffice entityId, NumberOfBallots numberOfBallots , Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
+    public TicketOffice(TicketOfficeId entityId, NumberOfBallots numberOfBallots , Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
 
         super(entityId);
         this.numberOfBallots = numberOfBallots;

@@ -6,11 +6,12 @@ import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.PurchaseInvo
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.TicketOffice;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
+import java.util.Optional;
 import java.util.Set;
 
 public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
 
-    protected Set<PurchaseInvoice> puchases;
+    protected Set<PurchaseInvoice> purchases;
     protected Set<TicketOffice> ticketOffices;
     protected Set<Project> projectset;
 
@@ -20,6 +21,7 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
 
     }
 /**
+        //Agregando Objetos
     public void addProject(ProjectId entityId, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(name);
@@ -47,7 +49,43 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
         Objects.requireNonNull(ticketDescription);
         appendChange(new TicketOfficeInvoiceAdded(ProjectId entityId, ProjectName name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal).apply();
     }
+
+
+
 */
+
+        //obtener mediante el id
+    public Optional<Project> getProjectId(ProjectId entityId){
+        return projectset.
+                stream().
+                filter(project -> project.identity().equals(entityId))
+                .findFirst();
+    }
+
+    public Optional<PurchaseInvoice> getProjectId(PurchaseInvoiceId entityId){
+        return purchases.
+                stream().
+                filter(purchase -> purchase.identity().equals(entityId))
+                .findFirst();
+    }
+
+    public Optional<TicketOffice> getProjectId(TicketOfficeId entityId){
+        return ticketOffices.
+                stream().
+                filter(ticketOffice -> ticketOffice.identity().equals(entityId))
+                .findFirst();
+    }
+    public Set<PurchaseInvoice> Puchases() {
+        return purchases;
+    }
+
+    public Set<TicketOffice> TicketOffices() {
+        return ticketOffices;
+    }
+
+    public Set<Project> Projectset() {
+        return projectset;
+    }
 }
 
 
