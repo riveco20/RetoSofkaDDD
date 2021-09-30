@@ -3,16 +3,15 @@ package com.sofka.domainPaqueExplora.domain.documentarycenter;
 import co.com.sofka.domain.generic.AggregateEvent;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.Project;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.PurchaseInvoice;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.TicketOfficeInvoice;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.TicketOffice;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
-import java.util.Objects;
 import java.util.Set;
 
 public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
 
     protected Set<PurchaseInvoice> puchases;
-    protected Set<TicketOfficeInvoice> ticketOffices;
+    protected Set<TicketOffice> ticketOffices;
     protected Set<Project> projectset;
 
     public DocumentaryCenter(DocumentaryCenterId entityId) {
