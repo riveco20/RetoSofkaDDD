@@ -14,7 +14,7 @@ public class BullilderTupdated extends DomainEvent {
     private  final Specialization specialization;
 
     public BullilderTupdated(BuilderId builderId, Telephone telephone, Function function, Specialization specialization) {
-        super("parqueexplora.bodega.contratistaAgregado");
+        super("parqueexplora.bodega.contratistaActualizado");
         this.builderId= builderId;
         this.telephone = telephone;
         this.function = function;

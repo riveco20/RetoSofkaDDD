@@ -23,8 +23,8 @@ public class Builder extends Entity {
         this.function = Objects.requireNonNull(function);
     }
 
-    public void upgradeSpecialization(Specialization specialization){
-        this.specialization = Objects.requireNonNull(specialization);
+    public void upgradeTelephone(Telephone telephone){
+        this.telephone= Objects.requireNonNull(telephone);
     }
 
     public void setTelephone(Telephone telephone) {

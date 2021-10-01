@@ -9,9 +9,11 @@ import com.sofka.domainPaqueExplora.domain.contract.event.BullilderTupdated;
 import com.sofka.domainPaqueExplora.domain.contract.event.ContractCreate;
 import com.sofka.domainPaqueExplora.domain.contract.event.ContractTypeChanged;
 import com.sofka.domainPaqueExplora.domain.contract.valueobject.*;
-import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.Name;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.Project;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.ProjectId;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Contract extends AggregateEvent<ContractId> {
@@ -20,9 +22,13 @@ public class Contract extends AggregateEvent<ContractId> {
     protected Set<Contractor> contrators;
     protected Set<Builder> builders;
 
-    public Contract(ContractId entityId, ContractType contractType){
-        super(entityId);
+    public Contract(ContractId contractId, ContractType contractType){
+        super(contractId);
         appendChange(new ContractCreate(contractType)).apply();
+    }
+    private Contract(ContractId contractId){
+        super(contractId);
+        subscribe(new ContractChange(this));
     }
 
     /**
@@ -61,8 +67,15 @@ public class Contract extends AggregateEvent<ContractId> {
 
     //Actualizar
 
-    public void upgradeBullider(BuilderId builderId, Telephone telephone, Function function, Specialization specialization){
+    public void upgradeBuilder(BuilderId builderId, Telephone telephone, Function function, Specialization specialization){
         appendChange(new BullilderTupdated(builderId,telephone,function,specialization)).apply();
+    }
+
+    protected Optional<Builder> getBuilderId(BuilderId builderId){
+        return builders.
+                stream().
+                filter(builder -> builder.identity().equals(entityId))
+                .findFirst();
     }
 
     public void renameContract(ContractType contractType){
