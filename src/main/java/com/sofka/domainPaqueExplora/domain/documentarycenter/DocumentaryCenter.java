@@ -108,6 +108,11 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
         appendChange(new NameChanged(name)).apply();
     }
 
+    public void sendAlert(String message){
+        appendChange(new MessageSent(message)).apply();
+
+    }
+
 
     public Name getName() {
         return name;
