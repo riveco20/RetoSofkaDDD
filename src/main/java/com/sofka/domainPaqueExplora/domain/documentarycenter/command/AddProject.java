@@ -5,6 +5,7 @@ import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
 public class AddProject extends Command{
     private final DocumentaryCenterId documentaryCenterId;
+    private final ProjectId projectId;
     private final Name name;
     private final ProjectDescription projectDescription;
     private final Money capitalMoney;
@@ -12,8 +13,10 @@ public class AddProject extends Command{
     private final Date dateFinal;
 
 
-    public AddProject(DocumentaryCenterId documentaryCenterId, Name name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal) {
+
+    public AddProject(DocumentaryCenterId documentaryCenterId,ProjectId projectId, Name name, ProjectDescription projectDescription, Money capitalMoney, Date dateInitial, Date dateFinal) {
         this.documentaryCenterId = documentaryCenterId;
+        this.projectId=projectId;
         this.name = name;
         this.projectDescription = projectDescription;
         this.capitalMoney = capitalMoney;
@@ -28,6 +31,10 @@ public class AddProject extends Command{
 
     public Name getName() {
         return name;
+    }
+
+    public ProjectId getProjectId() {
+        return projectId;
     }
 
     public ProjectDescription getProjectDescription() {

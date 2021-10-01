@@ -5,14 +5,16 @@ import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
 public class AddTicketOffice extends Command {
     private final DocumentaryCenterId documentaryCenterId;
+    private final TicketOfficeId ticketOfficeId;
     private final NumberOfBallots numberOfBallots;
     private final Date dateDay;
     private final Money ticketMoney;
     private final InvoiceDescription ticketDescription;
 
 
-    public AddTicketOffice(DocumentaryCenterId documentaryCenterId, NumberOfBallots numberOfBallots, Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
+    public AddTicketOffice(DocumentaryCenterId documentaryCenterId, TicketOfficeId ticketOfficeId ,NumberOfBallots numberOfBallots, Date dateDay, Money ticketMoney, InvoiceDescription ticketDescription) {
         this.documentaryCenterId = documentaryCenterId;
+        this.ticketOfficeId = ticketOfficeId;
         this.numberOfBallots = numberOfBallots;
         this.dateDay = dateDay;
         this.ticketMoney = ticketMoney;
@@ -21,6 +23,10 @@ public class AddTicketOffice extends Command {
 
     public DocumentaryCenterId getDocumentaryCenterId() {
         return documentaryCenterId;
+    }
+
+    public TicketOfficeId getTicketOfficeId() {
+        return ticketOfficeId;
     }
 
     public NumberOfBallots getNumberOfBallots() {

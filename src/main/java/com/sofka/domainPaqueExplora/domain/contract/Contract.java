@@ -1,6 +1,7 @@
 package com.sofka.domainPaqueExplora.domain.contract;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.generic.Identity;
 import com.sofka.domainPaqueExplora.domain.contract.entity.Builder;
 import com.sofka.domainPaqueExplora.domain.contract.entity.Contractor;
@@ -9,9 +10,12 @@ import com.sofka.domainPaqueExplora.domain.contract.event.BullilderTupdated;
 import com.sofka.domainPaqueExplora.domain.contract.event.ContractCreate;
 import com.sofka.domainPaqueExplora.domain.contract.event.ContractTypeChanged;
 import com.sofka.domainPaqueExplora.domain.contract.valueobject.*;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.DocumentaryCenter;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.entity.Project;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.DocumentaryCenterId;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.ProjectId;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -30,6 +34,14 @@ public class Contract extends AggregateEvent<ContractId> {
         super(contractId);
         subscribe(new ContractChange(this));
     }
+
+    public static Contract from(ContractId contractId, List<DomainEvent> events){
+        var contract = new Contract(contractId);
+        events.forEach(contract::applyEvent);
+        return contract;
+    }
+
+
 
     /**
     public void addEmployeeContractor(ContractId contractId,ContractorId contractorId, Name nameContractor, EmpleoyeeId empleoyeeId, Name nameEmployee, Salary salary, Telephone telephone, Post post){
