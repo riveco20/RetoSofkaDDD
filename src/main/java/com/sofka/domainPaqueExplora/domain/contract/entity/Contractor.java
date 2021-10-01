@@ -3,6 +3,7 @@ package com.sofka.domainPaqueExplora.domain.contract.entity;
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.domain.generic.Identity;
 import com.sofka.domainPaqueExplora.domain.contract.valueobject.*;
+import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.Money;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.Name;
 
 import java.util.Objects;
@@ -18,22 +19,24 @@ public class Contractor  extends Entity {
         NameContractor = nameContractor;
     }
 
-    public Employee EmpoyyeeCreater(EmpleoyeeId empleoyeeId, Name name, Salary salary,Telephone telephone, Post post){
+    public Employee EmpoyyeeCreater(EmpleoyeeId empleoyeeId, Name name, Email email, Telephone telephone, Post post, Money salary){
         Objects.requireNonNull(empleoyeeId);
         Objects.requireNonNull(name);
-        Objects.requireNonNull(salary);
+        Objects.requireNonNull(email);
         Objects.requireNonNull(telephone);
         Objects.requireNonNull(post);
-        var employee=new Employee(empleoyeeId,name, salary,telephone,post);
+        Objects.requireNonNull(salary);
+        var employee=new Employee(empleoyeeId,name, email,telephone,post,salary);
             return employee;
     }
 
-    public Ally AllyCreater(AllyId allyId, Name name, Telephone telephone, Post post){
+    public Ally AllyCreater(AllyId allyId, Name name, Telephone telephone, Post post,Email email){
         Objects.requireNonNull(allyId);
         Objects.requireNonNull(name);
         Objects.requireNonNull(telephone);
         Objects.requireNonNull(post);
-        var ally=new Ally(allyId,name,telephone,post);
+        Objects.requireNonNull(email);
+        var ally=new Ally(allyId,name,telephone,post,email);
         return ally;
     }
 
