@@ -22,4 +22,18 @@ public class Specialization implements ValueObject<String> {
     public String value() {
         return specialization;
     }
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        Specialization specialization2 = (Specialization) object;
+        return Objects.equals(specialization2, specialization2.specialization);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(specialization);
+    }
+
+
 }

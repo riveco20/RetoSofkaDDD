@@ -1,4 +1,4 @@
-package com.sofka.domainPaqueExplora.usecases;
+package com.sofka.domainPaqueExplora.usecases.Contract;
 
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;

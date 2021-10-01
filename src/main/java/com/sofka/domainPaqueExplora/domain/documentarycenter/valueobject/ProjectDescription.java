@@ -22,5 +22,17 @@ public class ProjectDescription implements ValueObject<String> {
     public String value() {
         return description;
     }
-   
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        ProjectDescription projectDescription = (ProjectDescription) object;
+        return Objects.equals(description, projectDescription.description);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(description);
+    }
 }

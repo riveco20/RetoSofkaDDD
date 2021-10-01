@@ -22,4 +22,20 @@ public class Date implements ValueObject<String> {
     public String value() {
         return date;
     }
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        Date dated = (Date) object;
+        return Objects.equals(date, dated.date);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(date);
+    }
+
+
+
 }

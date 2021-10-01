@@ -7,7 +7,6 @@ import java.util.Objects;
 public class Money implements ValueObject<String> {
 
     private final String money;
-    private final Double isNumer;
 
     public Money(String money) {
         this.money = Objects.requireNonNull(money);
@@ -15,8 +14,7 @@ public class Money implements ValueObject<String> {
             throw new IllegalArgumentException("Valor nulo");
 
         }
-        this.isNumer=Double.parseDouble(money);
-            if(isNumer<=0){
+            if(this.money.length()<100){
                 throw new IllegalArgumentException("El dinero debe ser mayor que cero");
             }
     }
@@ -27,4 +25,19 @@ public class Money implements ValueObject<String> {
 
         return money;
     }
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        Money moneyd = (Money) object;
+        return Objects.equals(money, moneyd.money);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(money);
+    }
+
+
 }

@@ -22,4 +22,18 @@ public class Function implements ValueObject<String> {
     public String value() {
         return function;
     }
+
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        Function function2 = (Function) object;
+        return Objects.equals(function2, function2.function);
     }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(function);
+    }
+}

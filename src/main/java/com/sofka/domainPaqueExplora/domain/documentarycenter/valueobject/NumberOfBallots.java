@@ -15,7 +15,7 @@ public class NumberOfBallots implements ValueObject<String> {
 
         }
         this.isNumer=Double.parseDouble(ballots);
-        if(isNumer<=0){
+        if(isNumer<0){
             throw new IllegalArgumentException("El dinero debe ser mayor que cero");
         }
     }
@@ -24,5 +24,18 @@ public class NumberOfBallots implements ValueObject<String> {
     @Override
     public String value() {
        return this.ballots;
+    }
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        NumberOfBallots numberOfBallots = (NumberOfBallots) object;
+        return Objects.equals(ballots, numberOfBallots.ballots);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(ballots);
     }
 }

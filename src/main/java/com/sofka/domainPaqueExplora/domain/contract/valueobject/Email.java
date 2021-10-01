@@ -22,6 +22,19 @@ public class Email implements ValueObject<String> {
     public String value() {
         return email;
     }
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        Email email2 = (Email) object;
+        return Objects.equals(email2, email2.email);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(email);
+    }
 }
 
 

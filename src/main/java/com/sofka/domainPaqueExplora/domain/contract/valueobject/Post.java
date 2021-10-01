@@ -23,4 +23,19 @@ public class Post implements ValueObject<String> {
         return post;
     }
 
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        Post post2 = (Post) object;
+        return Objects.equals(post2, post2.post);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(post);
+    }
+
+
+
 }

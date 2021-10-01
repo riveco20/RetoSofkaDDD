@@ -6,10 +6,9 @@ import com.sofka.domainPaqueExplora.domain.documentarycenter.command.CreateCente
 import com.sofka.domainPaqueExplora.domain.documentarycenter.event.DocumentaryCenterCreate;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.DocumentaryCenterId;
 import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.Name;
+import com.sofka.domainPaqueExplora.usecases.DocumentaryCenter.CreateCenterDocumentaryCommand;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CreateCenterDocumentaryCommandTest {
 

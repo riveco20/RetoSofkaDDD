@@ -22,4 +22,18 @@ public class InvoiceDescription implements ValueObject<String>{
     public String value() {
         return description;
     }
+
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object) return true;
+        if(object == null || getClass() != object.getClass()) return false;
+        InvoiceDescription invoiceDescription= (InvoiceDescription) object;
+        return Objects.equals(description, invoiceDescription.description);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(description);
+    }
 }
