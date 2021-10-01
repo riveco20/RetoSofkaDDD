@@ -5,13 +5,15 @@ import com.sofka.domainPaqueExplora.domain.documentarycenter.valueobject.*;
 
 public class UpgradePucharseInovoice extends Command {
     private final DocumentaryCenterId documentaryCenterId;
+    private final PurchaseInvoiceId purchaseInvoiceId;
     private final Date datePurchase;
     private final Money purchaseMoney;
     private final InvoiceDescription purchaseDescription;
     private final Name companyName;
 
-    public UpgradePucharseInovoice(DocumentaryCenterId documentaryCenterId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription, Name companyName) {
+    public UpgradePucharseInovoice(DocumentaryCenterId documentaryCenterId,PurchaseInvoiceId purchaseInvoiceId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription, Name companyName) {
         this.documentaryCenterId = documentaryCenterId;
+        this.purchaseInvoiceId = purchaseInvoiceId;
         this.datePurchase = datePurchase;
         this.purchaseMoney = purchaseMoney;
         this.purchaseDescription = purchaseDescription;
@@ -20,6 +22,10 @@ public class UpgradePucharseInovoice extends Command {
 
     public DocumentaryCenterId getDocumentaryCenterId() {
         return documentaryCenterId;
+    }
+
+    public PurchaseInvoiceId getPurchaseInvoiceId() {
+        return purchaseInvoiceId;
     }
 
     public Date getDatePurchase() {

@@ -2,19 +2,18 @@ package com.sofka.domainPaqueExplora.domain.contract.command;
 
 import co.com.sofka.domain.generic.Command;
 import com.sofka.domainPaqueExplora.domain.contract.Contract;
-import com.sofka.domainPaqueExplora.domain.contract.valueobject.ContractId;
-import com.sofka.domainPaqueExplora.domain.contract.valueobject.Function;
-import com.sofka.domainPaqueExplora.domain.contract.valueobject.Specialization;
-import com.sofka.domainPaqueExplora.domain.contract.valueobject.Telephone;
+import com.sofka.domainPaqueExplora.domain.contract.valueobject.*;
 
 public class AddBuilder extends Command {
     private final ContractId contractId;
+    private final BuilderId builderId;
     private final Telephone telephone;
     private final Specialization specialization;
     private final Function function;
 
-    public AddBuilder(ContractId contractId, Telephone telephone, Specialization specialization, Function function) {
+    public AddBuilder(ContractId contractId, BuilderId builderId, Telephone telephone, Specialization specialization, Function function) {
         this.contractId = contractId;
+        this.builderId = builderId;
         this.telephone = telephone;
         this.specialization = specialization;
         this.function = function;
@@ -22,6 +21,10 @@ public class AddBuilder extends Command {
 
     public ContractId getContractId() {
         return contractId;
+    }
+
+    public BuilderId getBuilderId() {
+        return builderId;
     }
 
     public Telephone getTelephone() {
