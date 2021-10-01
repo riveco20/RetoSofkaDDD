@@ -13,7 +13,7 @@ public Name(String name){
         throw new IllegalArgumentException("Ingresa un nombre por favor");
     }
 
-    if(this.name.length()>=5){
+    if(this.name.length()>100){
         throw new IllegalArgumentException("Los nombres de archivos no contiene mas de 4 caracteres");
     }
 }
