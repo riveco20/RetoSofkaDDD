@@ -1,8 +1,11 @@
 package com.sofka.domainPaqueExplora.domain.contract;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.Identity;
 import com.sofka.domainPaqueExplora.domain.contract.entity.Builder;
 import com.sofka.domainPaqueExplora.domain.contract.entity.Contractor;
+import com.sofka.domainPaqueExplora.domain.contract.event.BullilderAggregate;
+import com.sofka.domainPaqueExplora.domain.contract.event.BullilderTupdated;
 import com.sofka.domainPaqueExplora.domain.contract.event.ContractCreate;
 import com.sofka.domainPaqueExplora.domain.contract.event.ContractTypeChanged;
 import com.sofka.domainPaqueExplora.domain.contract.valueobject.*;
@@ -48,6 +51,19 @@ public class Contract extends AggregateEvent<ContractId> {
     }
 
 */
+    public void addBullider(BuilderId builderId, Telephone telephone, Function function, Specialization specialization){
+        Objects.requireNonNull(builderId);
+        Objects.requireNonNull(telephone);
+        Objects.requireNonNull(function);
+        Objects.requireNonNull(specialization);
+        appendChange(new BullilderAggregate(builderId, telephone, function,specialization)).apply();
+    }
+
+    //Actualizar
+
+    public void upgradeBullider(BuilderId builderId, Telephone telephone, Function function, Specialization specialization){
+        appendChange(new BullilderTupdated(builderId,telephone,function,specialization)).apply();
+    }
 
     public void renameContract(ContractType contractType){
         appendChange(new ContractTypeChanged(contractType)).apply();

@@ -7,15 +7,13 @@ import com.sofka.domainPaqueExplora.domain.contract.valueobject.Function;
 import com.sofka.domainPaqueExplora.domain.contract.valueobject.Specialization;
 import com.sofka.domainPaqueExplora.domain.contract.valueobject.Telephone;
 
-import javax.print.Doc;
-
-public class BullilderAggregate extends DomainEvent {
+public class BullilderTupdated extends DomainEvent {
     private final BuilderId builderId;
     private final Telephone telephone;
     private  final Function function;
     private  final Specialization specialization;
 
-    public BullilderAggregate(BuilderId builderId, Telephone telephone, Function function, Specialization specialization) {
+    public BullilderTupdated(BuilderId builderId, Telephone telephone, Function function, Specialization specialization) {
         super("parqueexplora.bodega.contratistaAgregado");
         this.builderId= builderId;
         this.telephone = telephone;
@@ -23,7 +21,7 @@ public class BullilderAggregate extends DomainEvent {
         this.specialization = specialization;
     }
 
-    public BuilderId getBuilderId() {
+    public BuilderId getEntityId() {
         return builderId;
     }
 
@@ -38,4 +36,5 @@ public class BullilderAggregate extends DomainEvent {
     public Specialization getSpecialization() {
         return specialization;
     }
+
 }
