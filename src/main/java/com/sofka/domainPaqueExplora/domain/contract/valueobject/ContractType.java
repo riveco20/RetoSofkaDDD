@@ -12,7 +12,7 @@ public class ContractType implements ValueObject<String> {
         if(this.contratType.isBlank()){
             throw new IllegalArgumentException("Descripcion bacia");
         }
-        if(this.contratType.length()<100){
+        if(this.contratType.length()<10){
             throw new IllegalArgumentException("Debe ser mas larga");
         }
 
@@ -20,7 +20,7 @@ public class ContractType implements ValueObject<String> {
 
     @Override
     public String value() {
-        return null;
+        return contratType;
     }
 
 

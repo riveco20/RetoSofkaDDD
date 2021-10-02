@@ -12,7 +12,7 @@ public class InvoiceDescription implements ValueObject<String>{
         if(this.description.isBlank()){
             throw new IllegalArgumentException("Descripcion bacia");
         }
-        if(this.description.length()<100){
+        if(this.description.length()<10){
             throw new IllegalArgumentException("Debe ser mas larga");
         }
 

@@ -60,12 +60,13 @@ public class DocumentaryCenterChange extends EventChange {
                     .orElseThrow(()-> new IllegalArgumentException("No se encontro el documento con el proyecto ingresado"));
             project.upgradeSpecifications(event.ProjectDescription());
             project.upgradeCapitalMoney(event.CapitalMoney());
-            project.upgradeDate(event.DateInitial(),event.DateFinal());
+            project.upgradeDateInitial(event.DateInitial());
+            project.upgradeDateFinal(event.DateFinal());
         });
 
         apply((PurcheseInvoiceupdated event)->{
           var purchaseInovoice=  documentaryCenter.getPurchaseForId(event.PurchaseInvoiceId())
-                  .orElseThrow(()-> new IllegalArgumentException("No se encontro el documento con el proyecto ingresado"));
+                  .orElseThrow(()-> new IllegalArgumentException("No se encontro la factura ingresada"));
               purchaseInovoice.upgradeData(event.DatePurchase(),event.CompanyName(), event.getPurchaseMoney(),event.PurchaseDescription());
         });
 

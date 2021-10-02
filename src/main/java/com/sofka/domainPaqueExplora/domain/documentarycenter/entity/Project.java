@@ -26,8 +26,11 @@ public class Project extends Entity<ProjectId> {
         this.capitalMoney = Objects.requireNonNull(capitalMoney);
     }
 
-    public void upgradeDate(Date dateInitial,Date dateFinal){
+    public void upgradeDateInitial(Date dateInitial) {
         this.dateInitial = Objects.requireNonNull(dateInitial);
+    }
+
+    public void upgradeDateFinal(Date dateFinal) {
         this.dateFinal = Objects.requireNonNull(dateFinal);
     }
 
@@ -35,6 +38,7 @@ public class Project extends Entity<ProjectId> {
    public void upgradeSpecifications(ProjectDescription projectDescription){
        this.projectDescription = Objects.requireNonNull(projectDescription);
     }
+
 
     public Name getName() {
         return name;

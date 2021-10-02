@@ -15,10 +15,11 @@ public class UpgradePucharSeInovoiceCommand extends UseCase<RequestCommand<Upgra
         documentary.upgradePurchaseInvoice(
                 command.getPurchaseInvoiceId(),
                 command.getDatePurchase(),
-                command.getCompanyName(),
                 command.getPurchaseMoney(),
-                command.getPurchaseDescription()
-        );
+                command.getPurchaseDescription(),
+                command.getCompanyName()
+
+                );
 
         emit().onResponse(new ResponseEvents(documentary.getUncommittedChanges()));
     }

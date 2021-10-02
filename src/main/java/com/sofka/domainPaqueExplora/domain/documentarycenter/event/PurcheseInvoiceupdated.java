@@ -10,7 +10,7 @@ public class PurcheseInvoiceupdated extends DomainEvent {
     private InvoiceDescription purchaseDescription;
     private Name companyName;
 
-    public PurcheseInvoiceupdated(PurchaseInvoiceId entityId, Date datePurchase, Name companyName, Money purchaseMoney, InvoiceDescription purchaseDescription) {
+    public PurcheseInvoiceupdated(PurchaseInvoiceId entityId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription,Name companyName) {
         super("parqueexplora.bodega.facturacompraactualizada");
     }
 

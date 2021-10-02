@@ -72,8 +72,8 @@ public class DocumentaryCenter extends AggregateEvent<DocumentaryCenterId> {
         appendChange(new Projectupdated(entityId,name,projectDescription,dateInitial,dateFinal,capitalMoney)).apply();
     }
 
-    public void upgradePurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, Name companyName, Money purchaseMoney, InvoiceDescription purchaseDescription){
-        appendChange(new PurcheseInvoiceupdated(entityId,datePurchase,companyName,purchaseMoney,purchaseDescription)).apply();
+    public void upgradePurchaseInvoice(PurchaseInvoiceId entityId, Date datePurchase, Money purchaseMoney, InvoiceDescription purchaseDescription,Name companyName){
+        appendChange(new PurcheseInvoiceupdated(entityId,datePurchase,  purchaseMoney, purchaseDescription,companyName)).apply();
 
     }
 

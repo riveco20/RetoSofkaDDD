@@ -14,7 +14,7 @@ public class Money implements ValueObject<String> {
             throw new IllegalArgumentException("Valor nulo");
 
         }
-            if(this.money.length()<100){
+            if(this.money.length()<3){
                 throw new IllegalArgumentException("El dinero debe ser mayor que cero");
             }
     }

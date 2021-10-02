@@ -1,4 +1,4 @@
-package com.sofka.domainPaqueExplora.usecases;
+package com.sofka.domainPaqueExplora.usecases.DocumentaryCenter;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
